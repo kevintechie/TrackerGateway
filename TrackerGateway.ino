@@ -23,8 +23,8 @@
 
 #define NODEID      1
 #define NETWORKID   100
-#define FREQUENCY   RF69_915MHZ //Match this with the version of your Moteino! (others: RF69_433MHZ, RF69_868MHZ)
-#define KEY         "sampleEncryptKey" //has to be same 16 characters/bytes on all nodes, not more not less!
+#define FREQUENCY   RF69_915MHZ
+#define KEY         "ChangeMeChangeMe"
 #define IS_RFM69HCW true
 #define LED         8
 #define BEEP_BUTTON 7
@@ -172,7 +172,8 @@ void onBeepButtonPress(Button& beepButton) {
   Serial.println("Send Beep Pressed");
   beepStruct.pktType = BEEP;
   beepStruct.beepType = NORMAL;
-  if (radio.sendWithRetry(1, (const void*)(&beepStruct), sizeof(beepStruct)))
+  delay(3);
+  if (radio.sendWithRetry(2, (const void*)(&beepStruct), sizeof(beepStruct)))
     Serial.print(" ok!");
   else Serial.print(" nothing...");
   Blink(LED, 3);
