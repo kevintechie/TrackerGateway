@@ -172,10 +172,9 @@ void onBeepButtonPress(Button& beepButton) {
   Serial.println("Send Beep Pressed");
   beepStruct.pktType = BEEP;
   beepStruct.beepType = NORMAL;
-  delay(3);
   if (radio.sendWithRetry(2, (const void*)(&beepStruct), sizeof(beepStruct)))
-    Serial.print(" ok!");
-  else Serial.print(" nothing...");
+    Serial.println(" ok!");
+  else Serial.println(" nothing...");
   Blink(LED, 3);
 }
 
